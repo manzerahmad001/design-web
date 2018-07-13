@@ -1,0 +1,101 @@
+<main ontouchstart class="with-hover">
+	<aside>
+		<div></div>
+	</aside>
+	<section>
+		<h1>
+			<a id="link-signup" class="active" (click)="loadLoginSignUp('signup')" [ngClass]='(clicked[0] === true) ? "active" : "deactive"'>Sign Up</a>
+			<a id="link-login" (click)="loadLoginSignUp('login')" [ngClass]='(clicked[1] === true) ? "active" : "deactive"'>Log In</a>
+		</h1>
+		<form class="active" *ngIf='clicked[0] === true' (ngSubmit)="adduser()" [ngClass]='(clicked[0] === true) ? "active" : "deactivex"'>
+			<div>
+				<fieldset>
+					<div>
+						<label for="name">Name</label>
+						<input id="name" [(ngModel)]="model.name" name="name" type="text" placeholder="Enter your Full Name" required>
+					</div>
+				</fieldset>
+				<fieldset>
+					<div>
+						<label for="email">Email</label>
+						<input id="email" [(ngModel)]="model.email" name="email" type="email" placeholder="Enter your email" required>
+						<input id="email2" [(ngModel)]="model2.email" name="email" type="email" placeholder="Enter your email"  style="display: none;">
+					</div>
+				</fieldset>
+				<fieldset>
+					<div>
+						<label for="username">UserName</label>
+						<input id="username" [(ngModel)]="model.username" name="username" type="text" placeholder="Enter your username" required>
+						<input id="username2" [(ngModel)]="model2.username" name="username" type="text" placeholder="Enter your username"  style="display: none;">
+					</div>
+				</fieldset>
+				<fieldset>
+					<div>
+						<label for="psw">Password</label>
+						<input class="form-control" id="password" *ngIf="showpsw === false" class="fa fa-eye" [(ngModel)]="model.password" name="password" type="password" placeholder="••••••••"
+						required>
+						<input class="form-control" id="password" *ngIf="showpsw === true"  class="fa fa-eye" [(ngModel)]="model.password" name="password" type="text" placeholder="••••••••"
+						required>
+							<span class="input-group-append input-group-text" *ngIf="showpsw === false" (click) = "showpasw(true)">
+									<i class="fa fa-eye-slash" aria-hidden="true"></i>
+							</span>
+							<span class="input-group-append input-group-text" *ngIf="showpsw === true" (click) = "showpasw(false)">
+								<i class="fa fa-eye" aria-hidden="true"></i>
+							</span>
+					</div>
+				</fieldset>
+			</div>
+
+			<ul>
+				<li>
+					<button class="fb">Connect with Facebook</button>
+				</li>
+				<li>
+					<button class="tw">Connect with Twitter</button>
+				</li>
+			</ul>
+
+			<input type="submit" value="Sign Up" />
+		</form>
+		<form *ngIf='clicked[1] === true' (ngSubmit)="getuser()" [ngClass]='(clicked[1] === true) ? "active" : "deactivex"'>
+			<div style='margin-top:30px;'>
+				<fieldset>
+					<div>
+						<label for="username">UserName</label>
+						<input id="username" [(ngModel)]="model1.username" name="username" type="text" placeholder="Enter your username" required>
+					</div>
+				</fieldset>
+				<fieldset>
+					<div>
+						<label for="email">Email</label>
+						<input id="email" [(ngModel)]="model1.email" name="email" type="email" placeholder="Enter your email" required>
+					</div>
+				</fieldset>
+				<fieldset>
+					<div>
+						<label for="password">Password</label>
+						<input  *ngIf="showpsw1 === false" id="password" [(ngModel)]="model1.password" name="password" type="password" placeholder="••••••••" required>
+						<input  *ngIf="showpsw1 === true" id="password" [(ngModel)]="model1.password" name="password" type="text" placeholder="••••••••" required>
+						
+						<span class="input-group-append input-group-text" *ngIf="showpsw1 === false" (click) = "showpasw1(true)">
+								<i class="fa fa-eye-slash" aria-hidden="true"></i>
+						</span>
+						<span class="input-group-append input-group-text" *ngIf="showpsw1 === true" (click) = "showpasw1(false)">
+							<i class="fa fa-eye" aria-hidden="true"></i>
+						</span>
+					</div>
+				</fieldset>
+			</div>
+			<ul>
+				<li>
+					<button class="fb">Connect with Facebook</button>
+				</li>
+				<li>
+					<button class="tw">Connect with Twitter</button>
+				</li>
+			</ul>
+
+			<input type="submit" value="Log In" />
+		</form>
+	</section>
+</main>
